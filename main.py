@@ -65,6 +65,7 @@ label_widget_4.pack()
 
 
 entry_widget_2 = tkinter.Entry()
+entry_widget_2.config(show="*")
 entry_widget_2.pack()
 
 def generate_fernet_key(password):

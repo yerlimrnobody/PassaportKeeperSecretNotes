@@ -21,8 +21,8 @@ except:
 main_window = tkinter.Tk()
 main_window.title("SECRET NOTES")
 main_window.config(background="#c6c6be")
-main_window.maxsize(350,800)
-main_window.minsize(350,800)
+main_window.maxsize(350,740)
+main_window.minsize(350,740)
 
 
 snake_image = Image.open("secretnotes.jpeg")
@@ -35,38 +35,38 @@ label_widget_photo.config(image=photo, width=350, height=350)
 label_widget_photo.pack()
 
 
-label_widget_1 = tkinter.Label(text="ENTER TITLE FOR NOTE TO ENCRYPT")
+label_widget_1 = tkinter.Label(text="ENTER A NOTE TO REMEMBER")
 label_widget_1.config(font="Bold", background="#c6c6be")
-label_widget_1.pack()
+label_widget_1.place(x=47, y=320)
 
 
 entry_widget_1 = tkinter.Entry()
-entry_widget_1.pack()
+entry_widget_1.place(x=10, y=350, width=330)
 
 
-label_widget_2 = tkinter.Label(text="ENTER NOTE THAT WILL ENCRYPT")
+label_widget_2 = tkinter.Label(text="ENTER INFO THAT WILL BE ENCRYPTED")
 label_widget_2.config(font="Bold", background="#c6c6be")
-label_widget_2.pack()
+label_widget_2.place(x=15, y=375)
 
 
 label_widget_text = tkinter.Text()
 label_widget_text.config(height=10)
-label_widget_text.pack()
+label_widget_text.place(y=400)
 
 
-label_widget_3 = tkinter.Label(text="ENTER YOUR MASTER KEYWORD") #THAT WILL ENCRYPT YOUR TEXT")
+label_widget_3 = tkinter.Label(text="ENTER YOUR MASTER KEYWORD")
 label_widget_3.config(font="Bold", background="#c6c6be")
-label_widget_3.pack()
+label_widget_3.place(x=40, y=580)
 
 
-label_widget_4 = tkinter.Label(text="THAT WILL ENCRYPT YOUR TEXT")
+label_widget_4 = tkinter.Label(text="THAT WILL ENCRYPT YOUR INFO")
 label_widget_4.config(font="Bold", background="#c6c6be")
-label_widget_4.pack()
+label_widget_4.place(x=40, y=600)
 
 
 entry_widget_2 = tkinter.Entry()
 entry_widget_2.config(show="*")
-entry_widget_2.pack()
+entry_widget_2.place(x=10, y=620, width=330)
 
 def generate_fernet_key(password):
 
@@ -122,14 +122,24 @@ def title_save():
                 stored_file.write(encrypted_string + "\n")
 
 
+def clear_all():
+    entry_widget_1.delete(first=0, last=tkinter.END)
+    label_widget_text.delete("1.0","end-1c")
+    entry_widget_2.delete(first=0, last=tkinter.END)
+
+
 encrypt_button = tkinter.Button()
 encrypt_button.config(text="Encrypt And Save", command=title_save)
-encrypt_button.pack()
+encrypt_button.place(x=10, y=650, width=160)
 
 
 decrypt_button = tkinter.Button()
 decrypt_button.config(text="Decrypt", command=decrypt_string)
-decrypt_button.pack()
+decrypt_button.place(x=180, y=650, width=160)
+
+clear_button = tkinter.Button()
+clear_button.config(text="CLEAR ALL", command=clear_all)
+clear_button.place(x=10, y=690, width=330)
 
 
 
